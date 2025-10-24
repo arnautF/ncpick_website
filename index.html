@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en" class="h-full scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Lightweight desktop toolkit for working with geoscience data. Replace copy with your own." />
+  <meta property="og:title" content="ncPick" />
+  <meta property="og:description" content="ncPick website v1.0" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/assets/og-image.png" />
+  <title>ncPick</title>
+
+  <!-- Tailwind via CDN (simple, production-ready for a static page) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Tailwind config – tweak brand colors here if you like
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50:  '#eff6ff',
+              100: '#dbeafe',
+              200: '#bfdbfe',
+              300: '#93c5fd',
+              400: '#60a5fa',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Optional: nicer focus outline */
+    :focus-visible { outline: 2px dashed #2563eb; outline-offset: 2px; }
+  </style>
+</head>
+<body class="h-full bg-white text-gray-800 antialiased selection:bg-brand-200 selection:text-brand-900">
+  <!-- Sticky Nav -->
+  <header class="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-white/70 bg-white/90 border-b border-gray-100">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex h-16 items-center justify-between">
+	<a href="#top" class="flex items-center gap-2 font-semibold">
+  		<img src="img/logo.png" alt="ncPick logo" class="h-9 w-9 rounded-xl" />
+  		<span class="text-lg">ncPick</span>
+	</a>
+        <nav class="hidden md:flex items-center gap-6 text-sm">
+          <a href="#features" class="hover:text-brand-700">Features</a>
+          <a href="#roadmap" class="hover:text-brand-700">Roadmap</a>
+          <a href="#download" class="hover:text-brand-700">Download</a>
+          <a href="#docs" class="hover:text-brand-700">Docs</a>
+          <a href="#faq" class="hover:text-brand-700">FAQ</a>
+        </nav>
+        <div class="flex items-center gap-2">
+	<a href="https://zenodo.org/records/17047609" target="_blank" class="hidden sm:inline-flex items-center gap-2 	rounded-xl bg-brand-600 px-4 py-2 text-white hover:bg-brand-700 shadow-sm">Download</a>
+          <button class="md:hidden rounded-xl border border-gray-200 p-2" id="menuBtn" aria-label="Open menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="md:hidden hidden border-t border-gray-100 bg-white">
+      <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 grid gap-3 text-sm">
+        <a href="#features" class="hover:text-brand-700">Features</a>
+        <a href="#roadmap" class="hover:text-brand-700">Figures</a>
+        <a href="#download" class="hover:text-brand-700">Download</a>
+        <a href="#docs" class="hover:text-brand-700">Docs</a>
+        <a href="#faq" class="hover:text-brand-700">FAQ</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="top" class="relative isolate overflow-hidden">
+    <div class="absolute inset-0 -z-10 bg-gradient-to-b from-brand-50 via-white to-white"></div>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+      <div class="grid items-center gap-12 md:grid-cols-2">
+        <div>
+          <h1 class="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl">ncPick<span class="text-brand-600">.</span> <span class="font-normal text-gray-700">Environmental Data. Simplified.</span></h1>
+          <p class="mt-5 text-lg text-gray-600">ncPick is a free software solution for intuitive, fast and simple data extraction and analysis from Copernicus Climate Data Store (CDS) NetCDF data files.</p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="#download" class="inline-flex items-center justify-center rounded-xl bg-brand-600 px-5 py-3 font-medium text-white shadow-sm hover:bg-brand-700">Download</a>
+            <a href="#docs" class="inline-flex items-center justify-center rounded-xl border border-gray-200 px-5 py-3 font-medium text-gray-800 hover:bg-gray-50">Read the Docs</a>
+          </div>
+          <div class="mt-6 flex items-center gap-6 text-sm text-gray-500">
+            <div class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-blue-500"></span> Windows
+</div>
+            <div class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-purple-500"></span> NetCDF</div>
+          </div>
+        </div>
+        <div class="relative">
+<figure class="aspect-[16/10] w-full overflow-hidden rounded-2xl shadow-none">
+  <img src="img/fig2.svg" alt="ncPick main window" class="w-full h-full object-contain" />
+  <figcaption class="px-4 py-3 text-sm text-gray-500">Main interface of ncPick.</figcaption>
+</figure>
+
+
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="py-16 sm:py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Why ncPick?</h2>
+        <p class="mt-4 text-gray-600">ncPick makes CDS NetCDF data accessible to everyone—from students to scientists—without the hassle of complex file structures.</p>
+      </div>
+      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <!-- Feature card -->
+        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow">
+          <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-100 text-brand-700">1</div>
+          <h3 class="font-semibold text-gray-900">Shapefile selection</h3>
+          <p class="mt-2 text-sm text-gray-600">Load a shapefile and clip your data to the exact area you need.</p>
+        </div>
+        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow">
+          <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-100 text-brand-700">2</div>
+          <h3 class="font-semibold text-gray-900">CSV export</h3>
+          <p class="mt-2 text-sm text-gray-600">One‑click export to common formats for analysis and sharing.</p>
+        </div>
+        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow">
+          <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-100 text-brand-700">3</div>
+          <h3 class="font-semibold text-gray-900">Time‑of‑day heatmaps</h3>
+          <p class="mt-2 text-sm text-gray-600">Visualize diurnal cycles and quickly spot recurring patterns.</p>
+        </div>
+        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow">
+          <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-100 text-brand-700">4</div>
+          <h3 class="font-semibold text-gray-900">Interpolation</h3>
+          <p class="mt-2 text-sm text-gray-600">Create smooth interpolation in a few clicks.</p>
+        </div>
+        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow">
+          <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-100 text-brand-700">5</div>
+          <h3 class="font-semibold text-gray-900">Portable application</h3>
+          <p class="mt-2 text-sm text-gray-600">No install required, just run the .EXE file.</p>
+        </div>
+        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm hover:shadow">
+          <div class="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-100 text-brand-700">6</div>
+          <h3 class="font-semibold text-gray-900">Always free</h3>
+          <p class="mt-2 text-sm text-gray-600">Always free with continued efforts to improve and add features.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Figures / Screenshots -->
+<section id="roadmap" class="py-16 sm:py-20 bg-gray-50 border-y border-gray-200">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+    <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">ncPick roadmap through 2027</h2>
+    <p class="mt-3 text-gray-600 max-w-2xl mx-auto">
+      Explore the planned updates and future direction of ncPick.
+    </p>
+
+    <div class="mt-10">
+      <figure class="w-full overflow-hidden rounded-2xl shadow-sm">
+        <img src="img/fig3.svg" alt="ncPick Roadmap" class="w-full h-auto object-contain" />
+      </figure>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Download / CTA -->
+  <section id="download" class="py-16 sm:py-20 bg-gradient-to-b from-white to-brand-50/60 border-t border-gray-200">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-10 lg:grid-cols-2 lg:items-center">
+        <div>
+          <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Download ncPick</h2>
+          <p class="mt-4 text-gray-600">Windows version 1.0 released</p>
+          <div class="mt-8 grid gap-3 sm:grid-cols-2">
+<a href="https://zenodo.org/records/17047609" class="inline-flex items-center justify-center rounded-xl bg-brand-600 px-5 py-3 font-medium text-white shadow-sm hover:bg-brand-700">Windows (x64)</a>
+
+          </div>
+          <p class="mt-3 text-xs text-gray-500">By downloading, you agree to the MIT License.</p>
+        </div>
+        <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+          <h3 class="font-semibold">Release notes</h3>
+          <ul class="mt-3 list-disc space-y-2 pl-5 text-sm text-gray-700">
+            <li>Version 1.0 released</li>
+            <li>Some limitations with large NetCDF files as outlined in the manual</li>
+            <li>Future improvements as per the roadmap</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Docs / Links -->
+  <section id="docs" class="py-16 sm:py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-8 md:grid-cols-3">
+        <div class="md:col-span-2">
+          <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Documentation</h2>
+<div class="mt-6 grid gap-4 sm:grid-cols-2">
+  <a href="docs/ncPick v1.0- User manual.pdf" target="_blank" class="group rounded-2xl border border-gray-200 bg-white p-5 shadow-sm hover:shadow">
+    <h3 class="font-semibold group-hover:text-brand-700">User Manual</h3>
+    <p class="mt-2 text-sm text-gray-600">Full walkthrough with screenshots, usage instructions, QA and examples.</p>
+  </a>
+
+  <div href="files/ncPick_Paper.pdf" target="_blank" class="group rounded-2xl border border-gray-200 bg-white p-5 shadow-sm hover:shadow">
+    <h3 class="font-semibold group-hover:text-brand-700">Research Paper</h3>
+    <p class="mt-2 text-sm text-gray-600">Currently under review.</p>
+  </div>
+</div>
+  </section>
+
+<!-- FAQ -->
+<section id="faq" class="py-16 sm:py-20 bg-gray-50 border-t border-gray-200">
+  <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+    <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center">FAQ</h2>
+    <div class="mt-10 grid gap-4">
+
+      <details class="group rounded-2xl border border-gray-200 bg-white p-5 shadow-sm open:shadow">
+        <summary class="cursor-pointer list-none font-semibold flex items-center justify-between">
+          What file formats are supported?
+          <span class="ml-4 text-gray-400 group-open:rotate-180 transition-transform">▾</span>
+        </summary>
+        <div class="mt-3 text-sm text-gray-700">
+          Windows version 1.0 accepts NetCDF files obtained through the CDS.
+        </div>
+      </details>
+
+      <details class="group rounded-2xl border border-gray-200 bg-white p-5 shadow-sm open:shadow">
+        <summary class="cursor-pointer list-none font-semibold flex items-center justify-between">
+          Does it run offline?
+          <span class="ml-4 text-gray-400 group-open:rotate-180 transition-transform">▾</span>
+        </summary>
+        <div class="mt-3 text-sm text-gray-700">
+          Yes, ncPick operates entirely offline, designed to render the world map of localities without connecting to any external service and to manage all data storage locally.
+        </div>
+      </details>
+
+      <details class="group rounded-2xl border border-gray-200 bg-white p-5 shadow-sm open:shadow">
+        <summary class="cursor-pointer list-none font-semibold flex items-center justify-between">
+          How do I cite ncPick?
+          <span class="ml-4 text-gray-400 group-open:rotate-180 transition-transform">▾</span>
+        </summary>
+        <div class="mt-3 text-sm text-gray-700">
+          You can currently cite the Zenodo software link:
+          <br><br>
+          Jevremović, S., Arnaut, F., Kolarski, A., & Sreckovic, V. (2025).
+          <em>Software for: "ncPick: A Lightweight Toolkit for Extracting, Analyzing, and Visualizing Copernicus ERA5 NetCDF Climate Data"</em> (v1.0).
+          <strong>Zenodo.</strong>
+          <a href="https://doi.org/10.5281/zenodo.17047609" target="_blank" class="text-brand-600 hover:underline">
+            https://doi.org/10.5281/zenodo.17047609
+          </a>
+        </div>
+      </details>
+
+      <!-- NEW FAQ ITEM -->
+      <details class="group rounded-2xl border border-gray-200 bg-white p-5 shadow-sm open:shadow">
+        <summary class="cursor-pointer list-none font-semibold flex items-center justify-between">
+          Who are the developers?
+          <span class="ml-4 text-gray-400 group-open:rotate-180 transition-transform">▾</span>
+        </summary>
+        <div class="mt-3 text-sm text-gray-700">
+          Researchers from the Institute of physics Belgrade, University of Belgrade, Republic of Serbia. The team members are Filip Arnaut, Sreten Jevremović, Aleksandra Kolarski and Vladimir A. Srećković.
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-gray-200 bg-white">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+      <div class="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+        <div class="flex items-center gap-2 text-sm text-gray-600">
+          <img src="img/logo.png" alt="ncPick logo" class="h-8 w-8 rounded-lg" />
+          <span>ncPick • MIT Licensed</span>
+        </div>
+        <nav class="flex flex-wrap items-center gap-4 text-sm text-gray-600">
+          <a href="#docs" class="hover:text-brand-700">Docs</a>
+          <a href="#download" class="hover:text-brand-700">Download</a>
+          <a href="#faq" class="hover:text-brand-700">FAQ</a>
+          <a href="#top" class="hover:text-brand-700">Back to top ↑</a>
+        </nav>
+      </div>
+      <p class="mt-4 text-xs text-gray-500">© <span id="year"></span> Filip Arnaut, Institute of Physics Belgrade, National Institute of the Republic of Serbia, University of Belgrade.</p>
+    </div>
+  </footer>
+
+  <!-- Theme & menu scripts -->
+  <script>
+
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn?.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
